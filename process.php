@@ -81,7 +81,7 @@ foreach ($answers as $qid => $oid) {
     $_SESSION['mbti_scores'] = $scores;
 
     // 3. 创建订单
-    $sn = 'MB' . time();
+    $sn =  date('YmdHis') . rand(1000, 9999);
     $stmt = $db->prepare("INSERT INTO orders (order_sn, mbti_result) VALUES (?, ?)");
     $stmt->execute([$sn, $mbti]);
 

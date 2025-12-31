@@ -17,7 +17,7 @@ if (isset($_GET['reset'])) {
     <title>分析已就绪 - 立即解锁您的深度性格报告</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@报告编号400;700;900&display=swap');
         body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
         
         /* 延续结果页的斜切 Banner */
