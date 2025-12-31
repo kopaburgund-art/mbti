@@ -104,9 +104,34 @@ if (isset($_GET['reset'])) {
                     </div>
                 </div>
 
-                <a href="result.php?sn=<?=$sn?>" class="btn-pay relative overflow-hidden block w-full bg-indigo-600 hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-200 text-white text-center py-6 rounded-2xl font-black text-xl transition-all active:scale-95 duration-300">
+                <!-- <a href="result.php?sn=<?=$sn?>" class="btn-pay relative overflow-hidden block w-full bg-indigo-600 hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-200 text-white text-center py-6 rounded-2xl font-black text-xl transition-all active:scale-95 duration-300">
                     立即解锁完整报告
-                </a>
+                </a> -->
+
+
+                <form action="pay.php" method="GET">
+                <input type="hidden" name="sn" value="<?= $sn ?>">
+                <input type="hidden" name="amount" value="19.9">
+
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <label class="relative cursor-pointer">
+                        <input type="radio" name="payType" value="11" checked class="peer sr-only">
+                        <div class="p-4 border-2 rounded-2xl text-center peer-checked:border-indigo-600 peer-checked:bg-indigo-50 transition-all">
+                            <span class="block text-sm font-bold text-slate-700">支付宝</span>
+                        </div>
+                    </label>
+                    <label class="relative cursor-pointer">
+                        <input type="radio" name="payType" value="12" class="peer sr-only">
+                        <div class="p-4 border-2 rounded-2xl text-center peer-checked:border-green-600 peer-checked:bg-green-50 transition-all">
+                            <span class="block text-sm font-bold text-slate-700">微信支付</span>
+                        </div>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-pay relative overflow-hidden block w-full bg-indigo-600 hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-200 text-white text-center py-6 rounded-2xl font-black text-xl transition-all active:scale-95 duration-300">
+                    立即支付解锁报告
+                </button>
+            </form>
  <a href="?reset=1"
                class="text-xs text-gray-300 hover:text-red-400 transition">
                 重置测试
