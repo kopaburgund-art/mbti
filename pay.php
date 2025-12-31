@@ -34,9 +34,9 @@ $url = 'https://www.yishoumi.cn/u/payment';
 try {
     $response = YsmPayApi::HttpPost($url, json_encode($data));
     $result = json_decode($response, true);
-    var_dump($data)
+    var_dump($data);
 
-    var_dump($response)
+    var_dump($response);
 
     if (!$result || !isset($result['url'])) {
         die("下单失败：" . ($result['msg'] ?? '接口异常'));
