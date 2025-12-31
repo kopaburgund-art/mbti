@@ -15,7 +15,7 @@ class YsmPayApi{
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0); 
         // 注意：如果你是在本地测试，User-Agent 可能会报错，这里加个默认值
  
-        curl_setopt($curl, CURLOPT_USERAGENT, $userAgent);
+       
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
         curl_setopt($curl, CURLOPT_POST, 1);
