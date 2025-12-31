@@ -103,18 +103,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 height: 210
             });
 
-            /**
-             * 关键补充：
-             * 因为没有查询接口，PC端用户扫码后，浏览器无法实时知道支付成功。
-             * 1. 理想情况：支付平台的支付页（payUrl）如果是全屏的，它会自动重定向到 callback_url。
-             * 2. 当前情况：我们在自己页面生成的二维码，用户在手机支付。
-             * * 建议方案：前端定时轮询你【自己的数据库】或者【Session】，
-             * 看看 notify.php 是否已经把该订单标记为已支付。
-             */
-             setInterval(function() {
-                // 这里可以写一个请求到你自己的 check_local_order.php
-                // 如果后端返回支付成功，执行 window.location.href = 'result.php?order_no=...';
-             }, 3000);
+      // 2. 轮询订单状态
+        const sn = "<?= $order_no ?>";
+        const checkStatus = () => {
+            fetch('check_order.php?sn=' + sn)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.is_paid === 1) {
+                        window.location.href = '/mbti/result.php?sn=' + sn;
+                    }
+                });
+        };
+        setInterval(checkStatus, 2500); // 每2.5秒查一次
         </script>
     </body>
     </html>
