@@ -2,7 +2,7 @@
 
 <?php 
 session_start();
-$sn = $_GET['sn'] ?? 'MB'.time(); 
+$sn = $_GET['sn'] ??    date('YmdHis') . rand(1000, 9999);
 if (isset($_GET['reset'])) {
     session_destroy();
     header("Location: index.php");

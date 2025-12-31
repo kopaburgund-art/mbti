@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name="mbti";
     // 订单金额转为分
     $total_fee = intval(round($amount * 100)); 
-  
+ 
 
     // 构造请求参数 (严格对应文档)
     $data = [
