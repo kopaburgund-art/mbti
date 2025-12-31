@@ -1,7 +1,8 @@
 <?php
+include 'include/db.php';
 session_start();
 // 确保数据库路径正确
-$db = new PDO('sqlite:db/mbti_pro.sqlite');
+ 
 
 // 1. 接收答案逻辑 (POST 请求)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

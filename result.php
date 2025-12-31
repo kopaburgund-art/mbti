@@ -1,7 +1,8 @@
 <?php
+include 'include/db.php';
 session_start();
 $sn = $_GET['sn'] ?? '';
-$db = new PDO('sqlite:db/mbti_pro.sqlite');
+
 
 $order = $db->query("SELECT * FROM orders WHERE order_sn = '$sn'")->fetch(PDO::FETCH_ASSOC);
 $mbti = $order['mbti_result'] ?? 'INTJ';
@@ -37,7 +38,10 @@ $radar = $_SESSION['current_radar'] ?? [70, 60, 80, 50, 90, 75]; // 模拟维度
     </style>
 </head>
 <body>
-
+<?php
+ include 'include/nav.php';
+ 
+ renderNav();?>
     <div class="<?=$activeTheme['bg']?> banner-clip pt-16 pb-32 px-6 text-white relative overflow-hidden">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
             <div class="md:w-1/2">

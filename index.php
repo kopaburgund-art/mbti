@@ -1,9 +1,10 @@
 <?php
+include 'include/db.php';
+include 'include/nav.php';
 session_start();
-$db = new PDO('sqlite:db/mbti_pro.sqlite');
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$all_qs = $db->query("SELECT * FROM questions ORDER BY id ASC")->fetchAll(PDO::FETCH_ASSOC);
+// 获取所有题目
+$all_qs = $db->query("SELECT * FROM questions ORDER BY id ASC")->fetchAll();
 $total = count($all_qs);
 
 if ($total === 0) {
@@ -34,7 +35,7 @@ $stmt = $db->prepare("
     ORDER BY score DESC
 ");
 $stmt->execute([$current_q['id']]);
-$options = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$options = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -56,21 +57,7 @@ $options = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
 
-<!-- ===================== Nav（原样保留） ===================== -->
-<header class="bg-white border-b border-gray-100 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <div class="font-black text-xl tracking-tight text-indigo-600">
-            MBTI PRO
-        </div>
-        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
-            <a href="index.php" class="text-indigo-600 font-bold">性格测试</a>
-            <a href="#" class="hover:text-indigo-600 transition">MBTI 介绍</a>
-            <a href="#" class="hover:text-indigo-600 transition">类型说明</a>
-            <a href="#" class="hover:text-indigo-600 transition">专业版</a>
-        </nav>
-    </div>
-</header>
-
+ <?php renderNav();?>
 <!-- ===================== Banner（原样保留） ===================== -->
 <section class="bg-indigo-600 banner-clip pt-20 pb-32 px-6 text-white relative overflow-hidden">
     <div class="max-w-5xl mx-auto relative z-10">

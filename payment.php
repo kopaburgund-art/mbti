@@ -1,4 +1,9 @@
-<?php $sn = $_GET['sn'] ?? 'MB'.time(); ?>
+
+
+<?php 
+$sn = $_GET['sn'] ?? 'MB'.time(); 
+
+?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -40,7 +45,10 @@
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen antialiased">
-
+ <?php
+ include 'include/nav.php';
+ 
+ renderNav();?>
     <div class="absolute top-0 left-0 w-full h-72 bg-[#1e1b4b] banner-clip z-0">
         <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/20 to-transparent"></div>
     </div>
