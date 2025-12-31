@@ -111,7 +111,7 @@ if (isset($_GET['reset'])) {
 
                 <form action="pay.php" method="GET">
                 <input type="hidden" name="sn" value="<?= $sn ?>">
-                <input type="hidden" name="amount" value="19.9">
+                <input type="hidden" name="amount" value="0.01">
 
                 <div class="grid grid-cols-2 gap-4 mb-6">
                     <label class="relative cursor-pointer">
