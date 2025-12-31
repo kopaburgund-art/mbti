@@ -14,7 +14,7 @@ class YsmPayApi{
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0); // 跳过证书检查
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0); 
         // 注意：如果你是在本地测试，User-Agent 可能会报错，这里加个默认值
-        $userAgent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'Mozilla/5.0';
+ 
         curl_setopt($curl, CURLOPT_USERAGENT, $userAgent);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
@@ -24,6 +24,9 @@ class YsmPayApi{
         curl_setopt($curl, CURLOPT_HEADER, 0);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+        // 在 curl_setopt 部分添加：
+        curl_setopt($curl, CURLOPT_SSLVERSION, CURL_SSLVERSION_TLSv1_2);
+        curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
         $result = curl_exec($curl);
      
         if (curl_errno($curl)) {
