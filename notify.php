@@ -10,8 +10,8 @@ $appsecret = $config['appsecret'];
 $input = file_get_contents('php://input');
 $data = json_decode($input, true);
 
-// 记录日志（方便调试）
-file_put_contents('log.txt', date('Y-m-d H:i:s') . " 收到回调: " . $input . "\n", FILE_APPEND);
+// // 记录日志（方便调试）
+// file_put_contents('log.txt', date('Y-m-d H:i:s') . " 收到回调: " . $input . "\n", FILE_APPEND);
 
 if (!$data) {
     echo 'fail'; exit;
