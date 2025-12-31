@@ -39,7 +39,7 @@ if (isset($data['hash']) && $data['hash'] === $server_hash) {
             $update = $db->prepare("UPDATE orders SET is_paid = 1 WHERE order_sn = ?");
             $update->execute([$order_sn]);
             
-            file_put_contents('log.txt', "订单 {$order_sn} 支付成功，数据库已更新。\n", FILE_APPEND);
+            // file_put_contents('log.txt', "订单 {$order_sn} 支付成功，数据库已更新。\n", FILE_APPEND);
         }
         
         echo 'success'; // 必须输出 success 告诉平台停止通知
@@ -48,7 +48,7 @@ if (isset($data['hash']) && $data['hash'] === $server_hash) {
     }
 
 } else {
-    file_put_contents('log.txt', "签名验证失败。本地计算: {$server_hash} \n", FILE_APPEND);
+    // file_put_contents('log.txt', "签名验证失败。本地计算: {$server_hash} \n", FILE_APPEND);
     echo 'sign error';
 }
 ?>
