@@ -17,10 +17,10 @@ function isMobile() {
 // =====================================================
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $order_no = $_GET['sn'] ?? ''; 
-  $amount   = $_GET['amount'] ?? 19.9; // 默认金额
+    $amount   = $_GET['amount'] ?? 19.9; // 默认金额
 
     $payType  = intval($_POST['payType'] ?? 11); // 必须是整数
-
+    $name="mbti";
     // 订单金额转为分
     $total_fee = intval(round($amount * 100)); 
     $order_no  = date('YmdHis') . rand(1000, 9999);
