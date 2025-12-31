@@ -1,8 +1,13 @@
 
 
 <?php 
+session_start();
 $sn = $_GET['sn'] ?? 'MB'.time(); 
-
+if (isset($_GET['reset'])) {
+    session_destroy();
+    header("Location: index.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -102,7 +107,10 @@ $sn = $_GET['sn'] ?? 'MB'.time();
                 <a href="result.php?sn=<?=$sn?>" class="btn-pay relative overflow-hidden block w-full bg-indigo-600 hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-200 text-white text-center py-6 rounded-2xl font-black text-xl transition-all active:scale-95 duration-300">
                     立即解锁完整报告
                 </a>
-
+ <a href="?reset=1"
+               class="text-xs text-gray-300 hover:text-red-400 transition">
+                重置测试
+            </a>
                 <div class="mt-8 flex flex-col items-center space-y-4">
                     <div class="flex items-center space-x-6">
                         <div class="flex items-center text-[10px] font-black text-slate-400 uppercase tracking-widest">
